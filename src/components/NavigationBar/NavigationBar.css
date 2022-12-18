@@ -1,0 +1,7 @@
+.navBtnContainer{
+    width: 175px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}

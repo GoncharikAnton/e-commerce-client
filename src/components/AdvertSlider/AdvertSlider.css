@@ -1,0 +1,10 @@
+.advertImage{
+    width: 1500px;
+    height: 400px;
+    position: relative;
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
+
+}
