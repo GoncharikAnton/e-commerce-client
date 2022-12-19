@@ -9,7 +9,6 @@ import './NavigationBar.css'
 export const NavigationBar = () => {
 
     const context = useContext(DataContext);
-    console.log(context)
 
 
     return (

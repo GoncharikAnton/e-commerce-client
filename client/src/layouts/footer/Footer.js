@@ -14,6 +14,7 @@ export const Footer = () => {
                 </div>
                 <div className={'divTableFooter'}>
                     <table>
+                        <tbody>
                         <tr>
                             <th>Services</th>
                             <th>Products</th>
@@ -30,7 +31,9 @@ export const Footer = () => {
                             <td>Categories</td>
                             <td>Contact Us</td>
                         </tr>
-                    </table>
+
+                        </tbody>
+                        </table>
                 </div>
 
             </Container>
