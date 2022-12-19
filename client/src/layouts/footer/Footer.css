@@ -1,0 +1,34 @@
+.footer{
+    display: flex;
+    flex-wrap: wrap;
+}
+.topFooter{
+    margin-top: 35px;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.bottomFooter{
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.logoFooter{
+    width: 50%;
+}
+/*.divTableFooter{*/
+/*    width: 50%;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+/*.divRightBottomFooter{*/
+/*    width: 50%;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+
+/*}*/
+/*.divLeftBottomFooter{*/
+/*    width: 50%;*/
+/*}*/
