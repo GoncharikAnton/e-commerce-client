@@ -9,12 +9,17 @@ export const AdvertSlider = () => {
         setIndex(selectedIndex);
     };
 
+
+
+
+
+
     return (
         <Carousel activeIndex={index} onSelect={handleSelect}>
             <Carousel.Item>
                 <img
                     className="d-block w-100 advertImage"
-                    src="/images/horizon3.jpeg"
+                    src="/imgs/horizon3.jpeg"
                     alt="First slide"
                 />
                 <Carousel.Caption>
@@ -25,7 +30,7 @@ export const AdvertSlider = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100 advertImage"
-                    src="/images/horizon2.jpeg"
+                    src="/imgs/horizon2.jpeg"
                     alt="Second slide"
                 />
 
@@ -37,7 +42,7 @@ export const AdvertSlider = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100 advertImage"
-                    src="/images/horizon2.jpeg"
+                    src="/imgs/horizon2.jpeg"
                     alt="Third slide"
                 />
 

@@ -11,5 +11,10 @@ router.get('/', function(req, res, next) {
   }
 });
 
+router.post('/login', function(req, res, next) {
+  console.log(req.cookies)
+  userController.postLoginUser(req, res, next);
+});
+
 
 module.exports = router;

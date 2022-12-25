@@ -50,4 +50,31 @@ exports.getUser = async (req, res) => {
         }
     })
 };
+exports.postLoginUser = async (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log(req.body)
+    await db.query(`SELECT * FROM users WHERE email='${email}' AND password='${password}';`, (err, result) => {
+
+        if (err) {
+            console.log(err)
+        } else {
+            if (result.length) {
+                res.status(200).json({
+                    status: 'success',
+                    data: {
+                        result
+                    }
+                })
+            } else {
+                res.status(203).json({
+                    status: 'access forbidden',
+                    data: {
+                        access: 'forbidden'
+                    }
+                })
+            }
+        }
+    })
+};
 // "qweQW12!8T"

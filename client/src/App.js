@@ -1,3 +1,7 @@
+import axios from "axios";
+
+
+
 import './App.css';
 import {MyRoutes} from "./routes/routes";
 import {BrowserRouter} from "react-router-dom";
@@ -8,8 +12,9 @@ import {AdvertSlider} from "./components/AdvertSlider/AdvertSlider";
 import {Footer} from "./layouts/footer/Footer";
 import {ShortCard} from "./components/ShortCard/ShortCard";
 import {LongCard} from "./components/LongCard/LongCard";
-import FormCheck from "./components/FormCheck/FormCheck";
+import FormCheck from "./components/FormCheck/CustomFormCheck";
 import {PagePagination} from "./components/Pagination/PagePagination";
+
 
 function App() {
 
