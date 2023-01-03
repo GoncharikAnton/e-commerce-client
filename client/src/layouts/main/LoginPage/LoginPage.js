@@ -1,14 +1,15 @@
 import Container from "react-bootstrap/Container";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {userLogin} from "../../../api/usersData";
+import {DataContext} from "../../../context/context";
 
-export const LoginPage = () => {
+export const LoginPage = ({isLoggedIn, setIsLoggedIn}) => {
 
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('')
-
+    const context = useContext(DataContext)
     const mailHandler = (e) => {
         setMail(e.target.value)
     }
@@ -18,8 +19,9 @@ export const LoginPage = () => {
     const submitHandler = (e) => {
         e.preventDefault()
         userLogin(mail, password).then(res => {
-            console.log(res)
-        })
+            context.user = res.data.data.result[0]
+            setIsLoggedIn(!isLoggedIn);
+        });
     }
 
     return(

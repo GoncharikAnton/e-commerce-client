@@ -1,11 +1,15 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import {useEffect, useState} from "react";
-import {getProductImagesById} from "../../api/productsData";
+import {useContext, useEffect, useState} from "react";
+import {addToCartLocally, getProductImagesById} from "../../api/productsData";
 import {Link} from "react-router-dom";
+import {userAddToWishList} from "../../api/usersData";
+import {DataContext} from "../../context/context";
 
 export const ShortCard = ({item}) => {
 
+
+    const context = useContext(DataContext);
     const [images, setImages] = useState(['../imgs/gow.jpeg'])
 
     useEffect(() => {
@@ -16,6 +20,14 @@ export const ShortCard = ({item}) => {
             }
         });
     }, [])
+
+    const addToWish = () => {
+        userAddToWishList(context.user.id, item.id);
+    }
+
+    const addToCart = () => {
+        addToCartLocally(context.user.email, item.id)
+    }
 
 
     return (
@@ -34,8 +46,8 @@ export const ShortCard = ({item}) => {
             </Card.Body>
             <Card.Footer style={{backgroundColor: 'white'}}>
                 <small className="text-muted">
-                    <Button variant="dark">Add to wishlist</Button>
-                    <Button variant="dark">Add to cart</Button>
+                    <Button variant="dark" onClick={addToWish}>Add to wishlist</Button>
+                    <Button variant="dark" onClick={addToCart}>Add to cart</Button>
                 </small>
             </Card.Footer>
         </Card>

@@ -2,13 +2,14 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import CustomFormCheck from "../../../components/FormCheck/CustomFormCheck";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {getAllProducts} from "../../../api/productsData";
 import {ShortCard} from "../../../components/ShortCard/ShortCard";
 import './AllProductsPage.css'
+import {DataContext} from "../../../context/context";
 export const AllProductsPage = () => {
 
-
+    const context = useContext(DataContext)
     const [products, setProducts] = useState([]);
 
     useEffect(() => {

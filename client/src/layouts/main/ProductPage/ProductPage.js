@@ -1,15 +1,17 @@
 import {useParams} from "react-router";
-import {useEffect, useState} from "react";
-import {getProductById, getProductImagesById, getProductsSpecs} from "../../../api/productsData";
+import {useContext, useEffect, useState} from "react";
+import {addToCartLocally, getProductById, getProductImagesById, getProductsSpecs} from "../../../api/productsData";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {ImgSlider} from "../../../components/ImgSlider/ImgSlider";
 import {CustomButton} from "../../../components/CustomButton/CustomButton";
 import {log} from "debug";
+import {userAddToWishList} from "../../../api/usersData";
+import {DataContext} from "../../../context/context";
 
 export const ProductPage = () => {
-
+    const context = useContext(DataContext)
     const params = useParams()
     const [product, setProduct] = useState('');
     const [images, setImages] = useState([]);
@@ -37,6 +39,12 @@ export const ProductPage = () => {
         if (quantity < +product.units_in_stock) {
             setQuantity(quantity + 1)
         }
+    }
+    const addToWish = () => {
+        userAddToWishList(context.user.id, product.id);
+    }
+    const addToCart = () => {
+        addToCartLocally(context.user.email, product.id)
     }
 
     const features = () => {
@@ -90,8 +98,8 @@ export const ProductPage = () => {
 
                     </Col>
                     <Col>
-                        <CustomButton title={'Add to wishlist'} width={135}/>
-                        <CustomButton title={'Add to cart'} width={135}/>
+                        <CustomButton title={'Add to wishlist'} width={135} onclick={addToWish}/>
+                        <CustomButton title={'Add to cart'} width={135} onclick={addToCart}/>
 
                     </Col>
                 </Col>

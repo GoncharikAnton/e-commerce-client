@@ -12,9 +12,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  console.log(req.cookies)
   userController.postLoginUser(req, res, next);
 });
+router.post(`/wishlist`, function(req, res, next) {
+  userController.postWishList(req, res, next);
+});
 
+router.get(`/wishlist/:id`, function(req, res, next) {
+  userController.getWishList(req, res, next);
+});
+router.delete(`/wishlist`, function(req, res, next) {
+  userController.deleteWishList(req, res, next);
+});
 
 module.exports = router;

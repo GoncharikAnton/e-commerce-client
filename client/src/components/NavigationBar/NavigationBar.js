@@ -6,7 +6,12 @@ import {Button, Form} from "react-bootstrap";
 import {useContext} from "react";
 import {DataContext} from "../../context/context";
 import './NavigationBar.css'
+import {Link} from "react-router-dom";
+import {LinkContainer} from 'react-router-bootstrap'
+
 export const NavigationBar = () => {
+
+    const linkStyle = {color: 'inherit', textDecoration: 'none'}
 
     const context = useContext(DataContext);
 
@@ -14,12 +19,19 @@ export const NavigationBar = () => {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">Logo</Navbar.Brand>
+                <Navbar.Brand><Link to={'/'} style={linkStyle}>Logo</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Games</Nav.Link>
-                        <Nav.Link href="#link">Consoles</Nav.Link>
+                        <LinkContainer to="/products">
+                            <Nav.Link>All products</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/products/games">
+                            <Nav.Link>Games</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/products/consoles">
+                            <Nav.Link>Consoles</Nav.Link>
+                        </LinkContainer>
                         <Form className="d-flex">
                             <Form.Control
                                 type="search"
@@ -31,23 +43,32 @@ export const NavigationBar = () => {
                         </Form>
 
                     </Nav>
-                    {context.isLoggedIn ?
-                        (<NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Another action
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                    {context.user ?
+                        (<NavDropdown title={context.user.nickname} id="basic-nav-dropdown">
+                            <LinkContainer to="/profile">
+                                <NavDropdown.Item>My profile</NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/cart">
+                                <NavDropdown.Item>Cart</NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/wishlist">
+                                <NavDropdown.Item>Wishlist</NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/wishlist">
+                                <NavDropdown.Item>Orders</NavDropdown.Item>
+                            </LinkContainer>
                             <NavDropdown.Divider/>
-                            <NavDropdown.Item href="#action/3.4">
-                                Separated link
+                            <NavDropdown.Item>
+                                LogOut
                             </NavDropdown.Item>
                         </NavDropdown>)
                         :
                         (
                             <div className={'navBtnContainer'}>
-                                <Button  variant="outline-dark">LogIn</Button>
-                                <Button  variant="outline-dark">Register</Button>
+                                <Button variant="outline-dark"><Link to={'/login'}
+                                                                     style={linkStyle}>LogIn</Link></Button>
+                                <Button variant="outline-dark"><Link to={'/login'}
+                                                                     style={linkStyle}>Register</Link></Button>
                             </div>
                         )
 
